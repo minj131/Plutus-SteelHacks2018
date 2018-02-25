@@ -20,14 +20,22 @@ exports.getSubscriptions = (req, res) => {
 
  // Performs label detection on the image file
  client
-   .labelDetection('C:/Users/jamin/Documents/steelhacks2018/uploads/statements/statement.png')
+   .documentTextDetection('C:/Users/jamin/Documents/steelhacks2018/uploads/statements/statement.png')
    .then(results => {
-     const labels = results[0].labelAnnotations;
+     const labels = results[0].fullTextAnnotation;
 
-     console.log('Labels:');
-     labels.forEach(label => console.log(label.description));
+     console.log(labels.text);
+     const datapull = labels.text;
    })
    .catch(err => {
      console.error('ERROR:', err);
    });
- // [END vision_quickstart]
+ /**
+  * GET /data
+  * List all data.
+  */
+ exports.getGCSData = (req, res) => {
+     res.render('labels', {
+       locals: datapull
+     });
+ };

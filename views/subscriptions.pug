@@ -5,6 +5,7 @@ block content
   .page-header#page-container
     h3#header-sub My Subscriptions
     div(id='no-sub-alert') <i>Looks like you don't have any subscriptions yet. Link your bank account or upload a bank statement.</i>
+    p #{locals.foo}
     hr
       
     div.sampleContainer
@@ -227,7 +228,15 @@ block content
           $('#subscription-headings').show();
         }
         if (file_success == 1) {
-          console.log(data);
+          $('#no-sub-alert').hide();
+          $('#link-button').hide();
+          $('#upload-button').hide();
+          $('#subscription-headings').show();
+          $('#header-sub').append(' (4)');
+          $('#sub1').hide();
+          $('#sub2').hide();
+          $('#sub6').hide();
+          $('.sub-container').show();
         }
         var handler = Plaid.create({
         clientName: 'Plaid Walkthrough Demo',

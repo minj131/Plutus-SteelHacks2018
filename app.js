@@ -156,6 +156,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 app.get('/subscriptions', subscriptionsController.getSubscriptions);
 app.get('/analysis', analysisController.getAnalysis);
 
+app.get('/subscriptions', subscriptionsController.getGCSData);
 
 /**
   * PLAID Dependencies
