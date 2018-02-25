@@ -14,4 +14,12 @@ block content
         .form-group
           label.control-label File Input
           input(type='file', name='myFile')
-        button.btn.btn-primary(type='submit') Submit
+        button.btn.btn-primary(type='submit', id='submit') Submit
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js')
+        script(type='text/javascript').
+          (function($) {  
+            $('#submit').on('click', function(e) {
+              console.log("file accepted");
+              localStorage.setItem('file_success', '1');
+            });
+            })(jQuery);

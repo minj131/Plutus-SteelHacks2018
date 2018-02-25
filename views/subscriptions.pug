@@ -5,8 +5,6 @@ block content
   .page-header#page-container
     h3#header-sub My Subscriptions
     div(id='no-sub-alert') <i>Looks like you don't have any subscriptions yet. Link your bank account or upload a bank statement.</i>
-    div(id='subscription-container')
-    
     hr
       
     div.sampleContainer
@@ -202,49 +200,73 @@ block content
       
       br
       br
+    p#document-content
       
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js')
     script(src='https://cdn.plaid.com/link/v2/stable/link-initialize.js')
+    script(src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js')
     script(type='text/javascript').
-      (function($) {
-      $('.sub-container').hide();
-      $('.sampleContainer').hide();
-      $('#subscription-headings').hide();
-      var handler = Plaid.create({
-      clientName: 'Plaid Walkthrough Demo',
-      env: 'sandbox',
-      key: '6eb1d2636c345dc90d77aeaec76e8a', 
-      product: ['transactions'],
-      webhook: 'https://requestb.in', 
-      onLoad: function() {
-      },
-      onSuccess: function(public_token) {
+      var data = #{labels}
+      (function($) {  
+        const myStorage = window.localStorage;
+        const bank_success = myStorage.getItem("bank_success")
+        const file_success = myStorage.getItem("file_success");
+        console.log("bank:" + bank_success);
+        console.log("file:" + file_success);
         
-      $('#no-sub-alert').fadeOut('fast');
-      $('#link-button').fadeOut('fast');
-      $('#upload-button').fadeOut('fast');
-      $('#subscription-headings').fadeIn('slow');
-      $('.sampleContainer').fadeIn('fast');
-      setTimeout(function() {
-        $('.sampleContainer').addClass('hidden');
-        $('#header-sub').append(' (7)');
-        $('.sub-container').fadeIn('slow');
-      }, 5000);
-      $.post('/get_access_token', {
-      public_token: public_token
-      }, function() {
-      });
-      },
-      onExit: function(err, metadata) {
-      if (err != null) {
-      }
-      },
-      onEvent: function(eventName, metadata) {
-      }
-      });
-      $('#link-button').on('click', function(e) {
-      handler.open();
-      });
-      })(jQuery);
+        if(bank_success === null || bank_success === 0) {
+          $('.sub-container').hide();
+          $('.sampleContainer').hide();
+          $('#subscription-headings').hide();
+        } else if (bank_success == 1) {
+          $('#no-sub-alert').hide();
+          $('#link-button').hide();
+          $('#upload-button').hide();
+          $('.sampleContainer').addClass('hidden');
+          $('.sub-container').show();
+          $('#subscription-headings').show();
+        }
+        if (file_success == 1) {
+          console.log(data);
+        }
+        var handler = Plaid.create({
+        clientName: 'Plaid Walkthrough Demo',
+        env: 'sandbox',
+        key: '6eb1d2636c345dc90d77aeaec76e8a', 
+        product: ['transactions'],
+        webhook: 'https://requestb.in', 
+        onLoad: function() {
+        },
+        onSuccess: function(public_token) {
+        myStorage.setItem('bank_success', '1');
+        $('#no-sub-alert').fadeOut('fast');
+        $('#link-button').fadeOut('fast');
+        $('#upload-button').fadeOut('fast');
+        $('#subscription-headings').fadeIn('slow');
+        $('.sampleContainer').fadeIn('fast');
+        setTimeout(function() {
+          $('.sampleContainer').addClass('hidden');
+          $('#header-sub').append(' (7)');
+          $('.sub-container').fadeIn('slow');
+        }, 5000);
+        $.post('/get_access_token', {
+        public_token: public_token
+        }, function() {
+        });
+        },
+        onExit: function(err, metadata) {
+        if (err != null) {
+        }
+        },
+        onEvent: function(eventName, metadata) {
+        }
+        });
+        $('#link-button').on('click', function(e) {
+        handler.open();
+        });
+        $('#upload-button').on('click', function(e) {
           
+          });
+        })(jQuery);
+            
           

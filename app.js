@@ -25,6 +25,7 @@ const moment = require('moment');
 const plaid = require('plaid');
 
 const tesseract = require('tesseract.js')
+const vision = require('@google-cloud/vision')
 
 const upload = multer({ dest: path.join(__dirname, 'uploads/statements') });
 
@@ -44,6 +45,11 @@ const contactController = require('./controllers/contact');
 
 const subscriptionsController = require('./controllers/subscriptions');
 const analysisController = require('./controllers/analysis');
+
+/**
+ * Create GCS Client
+ */
+const gclient = new vision.ImageAnnotatorClient();
 
 /**
  * API keys and Passport configuration.
@@ -149,6 +155,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 
 app.get('/subscriptions', subscriptionsController.getSubscriptions);
 app.get('/analysis', analysisController.getAnalysis);
+
 
 /**
   * PLAID Dependencies

@@ -45,4 +45,12 @@
                 a(href='/analysis') Live Data Analysis
               li.divider
               li
-                a(href='/logout') Logout
+                a(href='/logout', id="logout") Logout
+                script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js')
+                script(type='text/javascript').
+                  (function($) {  
+                    $('#logout').on('click', function(e) {
+                      console.log("log out");
+                      localStorage.clear();
+                    });
+                    })(jQuery);

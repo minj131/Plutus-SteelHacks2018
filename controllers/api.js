@@ -1,3 +1,4 @@
+const vision = require('@google-cloud/vision')
 const bluebird = require('bluebird');
 const request = bluebird.promisifyAll(require('request'), { multiArgs: true });
 const cheerio = require('cheerio');
