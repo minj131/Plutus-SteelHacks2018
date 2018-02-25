@@ -1,0 +1,116 @@
+
+
+<!DOCTYPE html>
+<html>
+    <header>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+    </header>
+    <body>
+
+            <div class="container">
+                    <h2>Visit Counts</h2>
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Check Times By Categories
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                            <li class="catgb" role="presentation"><a role="menuitem" tabindex="-1" href="music.html">Music</a></li>
+                            <li class="catgb" role="presentation"><a role="menuitem" tabindex="-1" href="exercise.html">Exercise</a></li>
+                            <li class="catgb" role="presentation"><a role="menuitem" tabindex="-1" href="movie.html">Movie</a></li>
+                            <li class="catgb" role="presentation"><a role="menuitem" tabindex="-1" href="video.html">Video</a></li>
+                            <li class="catgb" role="presentation"><a role="menuitem" tabindex="-1" href="social.html">Social</a></li>
+                            <li class="catgb" role="presentation"><a role="menuitem" tabindex="-1" href="shopping.html">Shopping</a></li>
+                            <li class="catgb" role="presentation"><a role="menuitem" tabindex="-1" href="education.html">Education</a></li>
+                      </ul>
+                    </div>
+                
+                    <script>
+                            $(document).ready(function(){
+                            
+                                    $(".container h2").html("<b>Movie</b>");
+                            
+                            });
+                            </script>
+                 
+                  
+      <canvas id="myChart">
+
+
+
+
+
+        </canvas>
+
+        <canvas id="line-chart" width="600" height="300"></canvas>
+        <script>var ctx = document.getElementById("myChart").getContext('2d');
+                var myChart = new Chart(ctx, {
+                  type: 'pie',
+                  options: {
+    title: {
+      display: true,
+      text: 'Time Cost'
+    }
+  },
+  data: {
+                    labels: [ "netflix", "hulu"],
+                    datasets: [{
+                      backgroundColor: [
+                       
+                        "#FFFF00",
+                        "#9ACD32",
+                        
+                      ],
+                      data: [222, 91]
+                    }]
+  }
+});
+var original = Chart.defaults.global.legend.onClick;
+Chart.defaults.global.legend.onClick = function(e, legendItem) {
+  // Insert your custom functionality here
+
+  original.call(this, e, legendItem);
+};
+
+    
+            
+                </script>
+
+
+<script>
+        new Chart(document.getElementById("line-chart"), {
+          type: 'line',
+          data: {
+            labels: [20,49,11,56,20,26,40],
+            datasets: [{ 
+                data: [3,4,5,8,9,11,0,0],
+                label: "netflix",
+                borderColor:  "#FFFF00",
+                fill: false
+              }, { 
+                data: [10,12,11,20,11,9,9,9],
+                label: "hulu",
+                borderColor:  "#9ACD32",
+                fill: false
+              }, 
+            ]
+          },
+          options: {
+            title: {
+              display: true,
+              text: 'World population per region (in millions)'
+            }
+          }
+        });
+        
+        </script>
+
+            </div>
+              
+    </body>
+    </html>
+
+
+

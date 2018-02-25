@@ -131,6 +131,7 @@ app.use((req, res, next) => {
 });
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 app.use(express.static('uploads'));
+app.use(express.static('public/js'));
 
 /**
  * Primary app routes.
