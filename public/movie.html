@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
     <header>
@@ -24,16 +26,16 @@
                             <li class="catgb" role="presentation"><a role="menuitem" tabindex="-1" href="education.html">Education</a></li>
                       </ul>
                     </div>
-                
+
                     <script>
                             $(document).ready(function(){
-                            
-                                    $(".container h2").html("<b>Music</b>");
-                            
+
+                                    $(".container h2").html("<b>Movie</b>");
+
                             });
                             </script>
-                
-                  
+
+
       <canvas id="myChart">
 
 
@@ -52,53 +54,19 @@
       text: 'Time Cost'
     }
   },
-                  data: {
-                    labels: ["soundcloud", "Spotify"],
+  data: {
+                    labels: [ "netflix", "hulu"],
                     datasets: [{
                       backgroundColor: [
-                       
-                        
-                        "#FF4500",
-                        "#FF7F50",
-                        
+
+                        "#FFFF00",
+                        "#9ACD32",
+
                       ],
-                      data: [99, 93]
+                      data: [222, 91]
                     }]
-                  }
-                });
-                
-               
-
-        
-        </script>
-
-<script>
-        new Chart(document.getElementById("line-chart"), {
-          type: 'line',
-          data: {
-            labels: [1,6,11,16,21,26,30],
-            datasets: [{ 
-                data: [10,9,7,8,9,11,28,26],
-                label: "soundcloud",
-                borderColor:  "#FF4500",
-                fill: false
-              }, { 
-                data: [10,9,11,28,9,7,8,20],
-                label: "Spotify",
-                borderColor:  "#FF7F50",
-                fill: false
-              }, 
-            ]
-          },
-          options: {
-            title: {
-              display: true,
-              text: 'World population per region (in millions)'
-            }
-          }
-        });
-        
-        </script>
+  }
+});
 var original = Chart.defaults.global.legend.onClick;
 Chart.defaults.global.legend.onClick = function(e, legendItem) {
   // Insert your custom functionality here
@@ -106,14 +74,40 @@ Chart.defaults.global.legend.onClick = function(e, legendItem) {
   original.call(this, e, legendItem);
 };
 
-    
-            
+
+
                 </script>
 
 
+<script>
+        new Chart(document.getElementById("line-chart"), {
+          type: 'line',
+          data: {
+            labels: [20,49,11,56,20,26,40],
+            datasets: [{
+                data: [3,4,5,8,9,11,0,0],
+                label: "netflix",
+                borderColor:  "#FFFF00",
+                fill: false
+              }, {
+                data: [10,12,11,20,11,9,9,9],
+                label: "hulu",
+                borderColor:  "#9ACD32",
+                fill: false
+              },
+            ]
+          },
+          options: {
+            title: {
+              display: true,
+              text: ''
+            }
+          }
+        });
 
+        </script>
 
             </div>
-              
+
     </body>
     </html>

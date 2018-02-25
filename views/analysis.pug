@@ -3,3 +3,94 @@ extend layout
 block content
   .page-header#page-container
     h3#header-sub Live Data Analysis 
+
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js')
+
+    .container
+      h2 Visit Counts
+        |                     
+        .dropdown
+          button#menu1.btn.btn-primary.dropdown-toggle(type='button', data-toggle='dropdown')
+            | Check Times By Categories
+            span.caret
+            |                       
+            ul.dropdown-menu(role='menu', aria-labelledby='menu1')
+              li.catgb(role='presentation')
+                a(role='menuitem', tabindex='-1', href='music.html') Music
+              |                             
+              li.catgb(role='presentation')
+                a(role='menuitem', tabindex='-1', href='exercise.html') Exercise
+              |                             
+              li.catgb(role='presentation')
+                a(role='menuitem', tabindex='-1', href='movie.html') Movie
+              |                             
+              li.catgb(role='presentation')
+                a(role='menuitem', tabindex='-1', href='video.html') Video
+              |                             
+              li.catgb(role='presentation')
+                a(role='menuitem', tabindex='-1', href='social.html') Social
+              |                             
+              li.catgb(role='presentation')
+                a(role='menuitem', tabindex='-1', href='shopping.html') Shopping
+              |                             
+              li.catgb(role='presentation')
+                a(role='menuitem', tabindex='-1', href='education.html') Education
+        |                 
+        |              
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js')       
+        script.
+          $(document).ready(function(){
+          $(".catgb").click(function(){
+          $("#myChart").hide();
+          });
+          });
+        |                     
+        script.
+        |                   
+        |       
+        canvas#myChart
+        |      
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js')   
+        script.
+          var ctx = document.getElementById("myChart").getContext('2d');
+          var myChart = new Chart(ctx, {
+          type: 'pie',
+          options: {
+          title: {
+          display: true,
+          text: 'Time Cost'
+          }
+          },
+          data: {
+          labels: ["youtube", "netflix", "hulu", "amazon", "soundcloud", "meetup", "Spotify","lafitness","ab core","coursera","lynda","AWS"],
+          datasets: [{
+          backgroundColor: [
+          "#663399",
+          "#FF0000",
+          "#FF4500",
+          "#FF7F50",
+          "#FFFF00",
+          "#9ACD32",
+          "#008000",
+          "#20B2AA",
+          "#0000FF",
+          "#00008B",
+          "#8A2BE2",
+          "#9C00E5",
+          ],
+          data: [796, 222, 91, 53, 99, 60, 93,100,8,40,9,40]
+          }]
+          }
+          });
+          var original = Chart.defaults.global.legend.onClick;
+          Chart.defaults.global.legend.onClick = function(e, legendItem) {
+          // Insert your custom functionality here
+          original.call(this, e, legendItem);
+          };

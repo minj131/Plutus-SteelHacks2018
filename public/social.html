@@ -24,15 +24,15 @@
                             <li class="catgb" role="presentation"><a role="menuitem" tabindex="-1" href="education.html">Education</a></li>
                       </ul>
                     </div>
-                
+
                     <script>
                             $(document).ready(function(){
-                            
+
                                     $(".container h2").html("<b>Social</b>");
-                            
+
                             });
                             </script>
-                  
+
       <canvas id="myChart">
 
 
@@ -54,16 +54,16 @@
                     labels: ["meetup"],
                     datasets: [{
                       backgroundColor: [
-                       
+
                         "#8A2BE2",
-                      
+
                       ],
                       data: [ 60]
                     }]
                   }
                 });
-                
-               
+
+
 
 var original = Chart.defaults.global.legend.onClick;
 Chart.defaults.global.legend.onClick = function(e, legendItem) {
@@ -72,8 +72,8 @@ Chart.defaults.global.legend.onClick = function(e, legendItem) {
   original.call(this, e, legendItem);
 };
 
-    
-            
+
+
                 </script>
 
 
@@ -82,7 +82,7 @@ Chart.defaults.global.legend.onClick = function(e, legendItem) {
           type: 'line',
           data: {
             labels: [1,6,11,16,21,26,30],
-            datasets: [{ 
+            datasets: [{
                 data: [3,4,5,8,9,11,5,15],
                 label: "meetup",
                 borderColor:  "#8A2BE2",
@@ -93,14 +93,14 @@ Chart.defaults.global.legend.onClick = function(e, legendItem) {
           options: {
             title: {
               display: true,
-              text: 'World population per region (in millions)'
+              text: ''
             }
           }
         });
-        
+
         </script>
 
             </div>
-              
+
     </body>
     </html>

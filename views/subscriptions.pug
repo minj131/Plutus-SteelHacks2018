@@ -2,6 +2,7 @@ extends layout
   
 
 block content
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
   .page-header#page-container
     h3#header-sub My Subscriptions
     div(id='no-sub-alert') <i>Looks like you don't have any subscriptions yet. Link your bank account or upload a bank statement.</i>
@@ -73,7 +74,7 @@ block content
             ul.sidebar-list
               li.sidebar-item
                 span.glyphicon.glyphicon-sunglasses(style="font-size:1.7em; margin-right: 3px;")
-                a.sidebar-anchor(href='index.html') See Usage Data
+                a.sidebar-anchor(href='merge.html') See Usage Data
               |
               li.sidebar-item
                 span.glyphicon.glyphicon-trash(style="font-size:1.5em; margin-right: 3px")
@@ -203,6 +204,7 @@ block content
       br
     p#document-content
       
+    
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js')
     script(src='https://cdn.plaid.com/link/v2/stable/link-initialize.js')
     script(src='https://cdn.rawgit.com/naptha/tesseract.js/1.0.10/dist/tesseract.js')
