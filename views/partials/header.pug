@@ -6,9 +6,9 @@
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/')
-        i.fa.fa-cube
-        | Project name
+      a.navbar-brand(href='/' style='font-family: trajan;')
+        img(src="logo.png", style="float:left; margin-top: -15px;")
+        | P L U T U S
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li(class=(title === 'Home') ? 'active' : undefined)
@@ -42,7 +42,7 @@
                 a(href='/subscriptions') My Subscriptions
               li.divider
               li
-                a(href='/account') Live Data Analysis
+                a(href='/analysis') Live Data Analysis
               li.divider
               li
                 a(href='/logout') Logout

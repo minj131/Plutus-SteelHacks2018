@@ -18,14 +18,15 @@ const passport = require('passport');
 const expressValidator = require('express-validator');
 const expressStatusMonitor = require('express-status-monitor');
 const sass = require('node-sass-middleware');
+
 const multer = require('multer');
 const envvar = require('envvar');
 const moment = require('moment');
 const plaid = require('plaid');
 
-const upload = multer({ dest: path.join(__dirname, 'uploads') });
+const tesseract = require('tesseract.js')
 
-const subscriptionsController = require('./controllers/subscriptions');
+const upload = multer({ dest: path.join(__dirname, 'uploads/statements') });
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -39,6 +40,10 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
+
+
+const subscriptionsController = require('./controllers/subscriptions');
+const analysisController = require('./controllers/analysis');
 
 /**
  * API keys and Passport configuration.
@@ -143,6 +148,7 @@ app.post('/account/delete', passportConfig.isAuthenticated, userController.postD
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
 
 app.get('/subscriptions', subscriptionsController.getSubscriptions);
+app.get('/analysis', analysisController.getAnalysis);
 
 /**
   * PLAID Dependencies

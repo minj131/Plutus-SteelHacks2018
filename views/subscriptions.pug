@@ -15,13 +15,21 @@ block content
         span(class='dot dot_2')
         span(class='dot dot_3')
         span(class='dot dot_4')
+      br
       
     form.form-horizontal(method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
-    button#link-button Link Account
-    
-    div#subscription-heading-1
-      
+    a(href='#', style='color: #1565c0', id="link-button")
+      .panel.panel-default(style='background-color: #fff')
+        .panel-body
+          img(src='account.png', height=40)
+          |  Link Account
+    a(href='/api/upload', style='color: #1565c0', id="upload-button")
+      .panel.panel-default(style='background-color: #fff')
+        .panel-body
+          img(src='http://i.imgur.com/UPTzIdC.png', height=40)
+          |  File Upload
+    p
     div.sub-container
       div(class='row sub-row', id='sub1')
         div.col-sm-3 
@@ -36,8 +44,18 @@ block content
             br
             p(style="font-size: 50px; margin-top: 10px;") $155.88
             p Total Since 02/24/2017 
-        div.col-sm-1
-          //- span(class='glyphicon glyphicon-remove', style='font-size: 35px'
+            
+        div.col-sm-3(style="height:200px")
+          div.sidebar
+            ul.sidebar-list
+              li.sidebar-item
+                span.glyphicon.glyphicon-sunglasses(style="font-size:1.7em; margin-right: 3px;")
+                a.sidebar-anchor(href='#') See Usage Data
+              |
+              li.sidebar-item
+                span.glyphicon.glyphicon-trash(style="font-size:1.5em; margin-right: 3px")
+                a.sidebar-anchor(href='#') Cancel Subscription
+
       div(class='row sub-row', id='sub2')
         div.col-sm-3
           img(src="aws.png", style="margin-left: 40px; margin-top: 40px")
@@ -51,7 +69,16 @@ block content
             br
             p(style="font-size: 50px; margin-top: 10px;") $179.88
             p Total Since 02/24/2017 
-        div.col-sm-1
+        div.col-sm-3(style="height:200px")
+          div.sidebar
+            ul.sidebar-list
+              li.sidebar-item
+                span.glyphicon.glyphicon-sunglasses(style="font-size:1.7em; margin-right: 3px;")
+                a.sidebar-anchor(href='#') See Usage Data
+              |
+              li.sidebar-item
+                span.glyphicon.glyphicon-trash(style="font-size:1.5em; margin-right: 3px")
+                a.sidebar-anchor(href='#') Cancel Subscription
               
       div(class='row sub-row', id='sub3')
         div.col-sm-3
@@ -66,7 +93,16 @@ block content
             br
             p(style="font-size: 50px; margin-top: 10px;") $71.91
             p Total Since 02/24/2017 
-        div.col-sm-1
+        div.col-sm-3(style="height:200px")
+          div.sidebar
+            ul.sidebar-list
+              li.sidebar-item
+                span.glyphicon.glyphicon-sunglasses(style="font-size:1.7em; margin-right: 3px;")
+                a.sidebar-anchor(href='#') See Usage Data
+              |
+              li.sidebar-item
+                span.glyphicon.glyphicon-trash(style="font-size:1.5em; margin-right: 3px")
+                a.sidebar-anchor(href='#') Cancel Subscription
             
       div(class='row sub-row', id='sub4')
         div.col-sm-3
@@ -81,7 +117,16 @@ block content
             br
             p(style="font-size: 50px; margin-top: 10px;") $389.88
             p Total Since 02/24/2017 
-        div.col-sm-1
+        div.col-sm-3(style="height:200px")
+          div.sidebar
+            ul.sidebar-list
+              li.sidebar-item
+                span.glyphicon.glyphicon-sunglasses(style="font-size:1.7em; margin-right: 3px;")
+                a.sidebar-anchor(href='#') See Usage Data
+              |
+              li.sidebar-item
+                span.glyphicon.glyphicon-trash(style="font-size:1.5em; margin-right: 3px")
+                a.sidebar-anchor(href='#') Cancel Subscription
             
       div(class='row sub-row', id='sub5')
         div.col-sm-3
@@ -96,7 +141,16 @@ block content
             br
             p(style="font-size: 50px; margin-top: 10px;") $131.88
             p Total Since 02/24/2017 
-        div.col-sm-1
+        div.col-sm-3(style="height:200px")
+          div.sidebar
+            ul.sidebar-list
+              li.sidebar-item
+                span.glyphicon.glyphicon-sunglasses(style="font-size:1.7em; margin-right: 3px;")
+                a.sidebar-anchor(href='#') See Usage Data
+              |
+              li.sidebar-item
+                span.glyphicon.glyphicon-trash(style="font-size:1.5em; margin-right: 3px")
+                a.sidebar-anchor(href='#') Cancel Subscription
             
       div(class='row sub-row', id='sub6')
         div.col-sm-3
@@ -111,7 +165,16 @@ block content
             br
             p(style="font-size: 50px; margin-top: 10px;") $119.88
             p Total Since 02/24/2017 
-        div.col-sm-1
+        div.col-sm-3(style="height:200px")
+          div.sidebar
+            ul.sidebar-list
+              li.sidebar-item
+                span.glyphicon.glyphicon-sunglasses(style="font-size:1.7em; margin-right: 3px;")
+                a.sidebar-anchor(href='#') See Usage Data
+              |
+              li.sidebar-item
+                span.glyphicon.glyphicon-trash(style="font-size:1.5em; margin-right: 3px")
+                a.sidebar-anchor(href='#') Cancel Subscription
             
       div(class='row sub-row', id='sub7')
         div.col-sm-3
@@ -126,8 +189,18 @@ block content
             br
             p(style="font-size: 50px; margin-top: 10px;") $99.90
             p Total Since 02/24/2017 
-        div.col-sm-1
+        div.col-sm-3(style="height:200px")
+          div.sidebar
+            ul.sidebar-list
+              li.sidebar-item
+                span.glyphicon.glyphicon-sunglasses(style="font-size:1.7em; margin-right: 3px;")
+                a.sidebar-anchor(href='#') See Usage Data
+              |
+              li.sidebar-item
+                span.glyphicon.glyphicon-trash(style="font-size:1.5em; margin-right: 3px")
+                a.sidebar-anchor(href='#') Cancel Subscription
       
+      br
       br
       
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js')
@@ -149,6 +222,7 @@ block content
         
       $('#no-sub-alert').fadeOut('fast');
       $('#link-button').fadeOut('fast');
+      $('#upload-button').fadeOut('fast');
       $('#subscription-headings').fadeIn('slow');
       $('.sampleContainer').fadeIn('fast');
       setTimeout(function() {
@@ -156,9 +230,6 @@ block content
         $('#header-sub').append(' (7)');
         $('.sub-container').fadeIn('slow');
       }, 5000);
-      
-      
-      
       $.post('/get_access_token', {
       public_token: public_token
       }, function() {
