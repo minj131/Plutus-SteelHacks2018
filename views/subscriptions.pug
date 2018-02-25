@@ -1,0 +1,179 @@
+extends layout
+  
+
+block content
+  .page-header#page-container
+    h3#header-sub My Subscriptions
+    div(id='no-sub-alert') <i>Looks like you don't have any subscriptions yet. Link your bank account or upload a bank statement.</i>
+    div(id='subscription-container')
+    
+    hr
+      
+    div.sampleContainer
+      div.loader
+        span(class='dot dot_1')
+        span(class='dot dot_2')
+        span(class='dot dot_3')
+        span(class='dot dot_4')
+      
+    form.form-horizontal(method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    button#link-button Link Account
+    
+    div#subscription-heading-1
+      
+    div.sub-container
+      div(class='row sub-row', id='sub1')
+        div.col-sm-3 
+          img(src="amazon.png", style="margin-left: 40px; margin-top: 40px")
+        div.col-sm-3
+          div.sub-text-container
+            p <strong> Amazon Prime </strong>
+            p(style="font-size: 50px;") $12.99
+            p Next Due: Mar 20 
+        div.col-sm-3
+          div.sub-text-container
+            br
+            p(style="font-size: 50px; margin-top: 10px;") $155.88
+            p Total Since 02/24/2017 
+        div.col-sm-1
+          //- span(class='glyphicon glyphicon-remove', style='font-size: 35px'
+      div(class='row sub-row', id='sub2')
+        div.col-sm-3
+          img(src="aws.png", style="margin-left: 40px; margin-top: 40px")
+        div.col-sm-3
+          div.sub-text-container
+            p <strong> Amazon Web Services </strong>
+            p(style="font-size: 50px;") $14.99
+            p Next Due: Mar 01 
+        div.col-sm-3
+          div.sub-text-container
+            br
+            p(style="font-size: 50px; margin-top: 10px;") $179.88
+            p Total Since 02/24/2017 
+        div.col-sm-1
+              
+      div(class='row sub-row', id='sub3')
+        div.col-sm-3
+          img(src="hulu.png", style="margin-left: 40px; margin-top: 40px")
+        div.col-sm-3
+          div.sub-text-container
+            p <strong> Hulu Plus </strong>
+            p(style="font-size: 50px;") $7.99
+            p Next Due: Mar 21 
+        div.col-sm-3
+          div.sub-text-container
+            br
+            p(style="font-size: 50px; margin-top: 10px;") $71.91
+            p Total Since 02/24/2017 
+        div.col-sm-1
+            
+      div(class='row sub-row', id='sub4')
+        div.col-sm-3
+          img(src="lafitness.png", style="margin-left: 40px; margin-top: 40px")
+        div.col-sm-3
+          div.sub-text-container
+            p <strong> LA Fitness </strong>
+            p(style="font-size: 50px;") $19.99
+            p Next Due: Mar 14 
+        div.col-sm-3
+          div.sub-text-container
+            br
+            p(style="font-size: 50px; margin-top: 10px;") $389.88
+            p Total Since 02/24/2017 
+        div.col-sm-1
+            
+      div(class='row sub-row', id='sub5')
+        div.col-sm-3
+          img(src="netflix.png", style="margin-left: 40px; margin-top: 40px")
+        div.col-sm-3
+          div.sub-text-container
+            p <strong> Netflix </strong>
+            p(style="font-size: 50px;") $10.99
+            p Next Due: Mar 21 
+        div.col-sm-3
+          div.sub-text-container
+            br
+            p(style="font-size: 50px; margin-top: 10px;") $131.88
+            p Total Since 02/24/2017 
+        div.col-sm-1
+            
+      div(class='row sub-row', id='sub6')
+        div.col-sm-3
+          img(src="soundcloud.png", style="margin-left: 40px; margin-top: 40px")
+        div.col-sm-3
+          div.sub-text-container
+            p <strong> Soundcloud Go </strong>
+            p(style="font-size: 50px;") $9.99
+            p Next Due: Mar 10 
+        div.col-sm-3
+          div.sub-text-container
+            br
+            p(style="font-size: 50px; margin-top: 10px;") $119.88
+            p Total Since 02/24/2017 
+        div.col-sm-1
+            
+      div(class='row sub-row', id='sub7')
+        div.col-sm-3
+          img(src="spotify.jpg", style="margin-left: 40px; margin-top: 40px")
+        div.col-sm-3
+          div.sub-text-container
+            p <strong> Spotify Premium </strong>
+            p(style="font-size: 50px;") $9.99
+            p Next Due: Mar 01 
+        div.col-sm-3
+          div.sub-text-container
+            br
+            p(style="font-size: 50px; margin-top: 10px;") $99.90
+            p Total Since 02/24/2017 
+        div.col-sm-1
+      
+      br
+      
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js')
+    script(src='https://cdn.plaid.com/link/v2/stable/link-initialize.js')
+    script(type='text/javascript').
+      (function($) {
+      $('.sub-container').hide();
+      $('.sampleContainer').hide();
+      $('#subscription-headings').hide();
+      var handler = Plaid.create({
+      clientName: 'Plaid Walkthrough Demo',
+      env: 'sandbox',
+      key: '6eb1d2636c345dc90d77aeaec76e8a', 
+      product: ['transactions'],
+      webhook: 'https://requestb.in', 
+      onLoad: function() {
+      },
+      onSuccess: function(public_token) {
+        
+      $('#no-sub-alert').fadeOut('fast');
+      $('#link-button').fadeOut('fast');
+      $('#subscription-headings').fadeIn('slow');
+      $('.sampleContainer').fadeIn('fast');
+      setTimeout(function() {
+        $('.sampleContainer').addClass('hidden');
+        $('#header-sub').append(' (7)');
+        $('.sub-container').fadeIn('slow');
+      }, 5000);
+      
+      
+      
+      $.post('/get_access_token', {
+      public_token: public_token
+      }, function() {
+      });
+      },
+      onExit: function(err, metadata) {
+      if (err != null) {
+      }
+      },
+      onEvent: function(eventName, metadata) {
+      }
+      });
+      $('#link-button').on('click', function(e) {
+      handler.open();
+      });
+      })(jQuery);
+          
+          
